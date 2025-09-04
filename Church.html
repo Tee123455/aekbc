@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agabe Ebenezer Karen Baptist Church – Welcome</title>
+  <meta name="description" content="Welcome to our church. Join us for worship, ministries, and community events." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020; /* deep navy */
+      --card:#0f1530;
+      --ink:#e6e9f5;
+      --muted:#b8bed8;
+      --accent:#7c9cff; /* indigo */
+      --accent-2:#76e4c3; /* teal */
+      --ring: rgba(124,156,255,.45);
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#090e1d 0%, #0c1230 100%);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Arial,Helvetica,sans-serif}
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin-inline:auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--accent),#4b6bff);color:#fff;border:0;padding:.9rem 1.1rem;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
+    .btn.alt{background:linear-gradient(135deg,var(--accent-2),#59c6aa);color:#001;}
+    .btn.ghost{background:transparent;border:1px solid #2a3566}
+    .btn:focus{outline:2px solid var(--ring);outline-offset:3px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(9,14,29,.7);backdrop-filter: blur(10px);border-bottom:1px solid #1a2147}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;letter-spacing:.3px}
+    .logo{width:36px;height:36px;border-radius:10px;background:conic-gradient(from 210deg,#7c9cff,#76e4c3,#7c9cff);box-shadow:0 6px 20px rgba(124,156,255,.35)}
+    .links{display:flex;gap:1rem}
+    .links a{padding:.6rem .8rem;border-radius:10px;text-decoration:none;color:var(--muted)}
+    .links a:hover{color:var(--ink);background:#161d44}
+    .menu-toggle{display:none}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero .wrap{display:grid;gap:1.3rem;grid-template-columns:1.1fr .9fr;align-items:center;padding:64px 0}
+    .badge{display:inline-flex;gap:.5rem;align-items:center;border:1px solid #2a3566;color:var(--muted);padding:.4rem .7rem;border-radius:999px;font-size:.9rem}
+    h1{font-size:clamp(2rem,4vw,3rem);margin:0}
+    .lead{color:var(--muted);font-size:1.05rem;line-height:1.6}
+    .hero-cards{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+    .card{background:linear-gradient(180deg,#0e1430, #0a1026);border:1px solid #1b2350;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .2rem;font-size:1rem}
+    .card p{margin:.2rem 0;color:var(--muted);font-size:.95rem}
+
+    /* Sections */
+    section{padding:64px 0;border-top:1px solid #13193d}
+    section h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 .6rem}
+    section .sub{color:var(--muted);margin-bottom:24px}
+
+    .grid-3{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+    .grid-2{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+
+    /* Ministries */
+    .min-card{display:grid;gap:.4rem;background:linear-gradient(180deg,#0e1536,#0b1230);border:1px solid #1b2350;border-radius:16px;padding:18px}
+    .min-card .emoji{font-size:1.6rem}
+
+    /* Sermons */
+    .sermon{display:grid;gap:.6rem;background:linear-gradient(180deg,#0e1536,#0b1230);border:1px solid #1b2350;border-radius:16px;overflow:hidden}
+    .sermon .body{padding:16px}
+    .sermon .meta{color:var(--muted);font-size:.9rem}
+
+    /* Events */
+    .event{display:flex;gap:14px;background:linear-gradient(180deg,#0e1536,#0b1230);border:1px solid #1b2350;border-radius:16px;padding:16px;align-items:flex-start}
+    .event .date{border:1px solid #2a3566;border-radius:12px;padding:8px 10px;min-width:110px;text-align:center;font-weight:700}
+
+    /* Give */
+    .give{display:grid;gap:16px;grid-template-columns:1.1fr .9fr}
+    .card.soft{background:linear-gradient(180deg,#0f173d,#0b1230)}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea{background:#0b112a;border:1px solid #1a2356;border-radius:12px;color:var(--ink);padding:12px}
+    input:focus, textarea:focus{outline:2px solid var(--ring);border-color:#4b6bff}
+
+    footer{padding:40px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero .wrap{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .give{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .links{display:none}
+      .menu-toggle{display:inline-flex}
+      .grid-3,.grid-2{grid-template-columns:1fr}
+      .hero-cards{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:1.05rem">Agape Ebenezer Karen Baptist Church</div>
+          <div style="font-size:.8rem;color:var(--muted)">Welcome • လျာထီၣ်</div>
+        </div>
+      </div>
+      <nav class="links" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#ministries">Ministries</a>
+        <a href="#sermons">Sermons</a>
+        <a href="#events">Events</a>
+        <a href="#give">Give</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle btn ghost" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+    <div id="mobileMenu" hidden>
+      <div class="container" style="padding:0 0 16px">
+        <nav style="display:grid;gap:8px" aria-label="Mobile">
+          <a class="btn ghost" href="#about">About</a>
+          <a class="btn ghost" href="#ministries">Ministries</a>
+          <a class="btn ghost" href="#sermons">Sermons</a>
+          <a class="btn ghost" href="#events">Events</a>
+          <a class="btn ghost" href="#give">Give</a>
+          <a class="btn ghost" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="container wrap">
+        <div>
+          <span class="badge">Sunday Worship • 12:00 PM (In-Person)</span>
+          <h1 id="heroTitle">Welcome home. You belong here.</h1>
+          <p class="lead">We are a Christ-centered community in <strong>Fort Worth</strong>. Join us for worship, grow in the Word, and serve our neighbors together. <span style="opacity:.85">တၢ်မနုၤတဖၣ်မးတိၢ်—မ့မ့ၢ်ဒီးတၢ်ကူၣ်—တၢ်တီတၢ်လိၤ</span></p>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:10px">
+            <a class="btn" href="#events">Plan a Visit</a>
+            <a class="btn alt" href="#give">Give Online</a>
+          </div>
+        </div>
+        <div class="hero-cards">
+          <div class="card">
+            <h3>Service Times</h3>
+            <p>Sunday 12:00 AM (Worship)</p>
+          </div>
+          <div class="card">
+            <h3>Location</h3>
+            <p>3900 Southwest Blvd, Fort Worth, TX 76116</p>
+          </div>
+          <div class="card">
+            <h3>Latest Message</h3>
+            <p><a href="#sermons">Watch last Sunday's sermon →</a></p>
+          </div>
+          <div class="card">
+            <h3>New Here?</h3>
+            <p><a href="#contact">We'd love to meet you →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / MISSION -->
+    <section id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <h2 id="aboutTitle">Our Mission</h2>
+        <p class="sub">Love God, love people, and make disciples of Jesus Christ.</p>
+        <div class="grid-3">
+          <div class="card soft">
+            <h3>Worship</h3>
+            <p>Christ-centered services with Scripture, prayer, and songs that lift the name of Jesus.</p>
+          </div>
+          <div class="card soft">
+            <h3>Grow</h3>
+            <p>Small groups and Bible studies for kids, youth, and adults throughout the week.</p>
+          </div>
+          <div class="card soft">
+            <h3>Serve</h3>
+            <p>We serve our city through outreach, meals, and partnerships with local ministries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINISTRIES -->
+    <section id="ministries" aria-labelledby="minTitle">
+      <div class="container">
+        <h2 id="minTitle">Ministries / ဝဲၤကျိၤ</h2>
+        <p class="sub">Find your place to belong and grow.</p>
+        <div class="grid-3">
+          <div class="min-card"><div class="emoji" aria-hidden>🎒</div><strong>Youth</strong><span>Friday discipleship nights for middle & high school.</span></div>
+          <div class="min-card"><div class="emoji" aria-hidden>🌸</div><strong>Women</strong><span>Gatherings, retreats, and mentoring.</span></div>
+          <div class="min-card"><div class="emoji" aria-hidden>🛠️</div><strong>Men</strong><span>Accountability groups & service projects.</span></div>
+          <div class="min-card"><div class="emoji" aria-hidden>🧸</div><strong>Children</strong><span>KidMin during services and VBS in summer.</span></div>
+          <div class="min-card"><div class="emoji" aria-hidden>🎶</div><strong>Worship</strong><span>Choir, band, and production/AV team.</span></div>
+          <div class="min-card"><div class="emoji" aria-hidden>🤝</div><strong>Care</strong><span>Prayer, meals, and counseling referrals.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERMONS -->
+    <section id="sermons" aria-labelledby="sermonTitle">
+      <div class="container">
+        <h2 id="sermonTitle">Latest Sermons</h2>
+        <p class="sub">Watch or listen on YouTube.</p>
+        <div class="grid-3">
+          <article class="sermon">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/vGUdFNtmkP4" title="Sermon" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="body">
+              <h3>Our Children Performing</h3>
+              <div class="meta">Children • Aug 25, 2025</div>
+            </div>
+          </article>
+          <article class="sermon">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/Y1ef2seNSVM" title="Sermon" frameborder="0" allowfullscreen></iframe>
+            <div class="body">
+              <h3>Sermon by Thera Saw Mu Lar</h3>
+              <div class="meta">Guest Speaker • Aug 18, 2025</div>
+            </div>
+          </article>
+          <article class="sermon">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/Fxs8eCDIHo4" title="Sermon" frameborder="0" allowfullscreen></iframe>
+            <div class="body">
+              <h3>Our Youth In Competetion</h3>
+              <div class="meta">Youth • Aug 11, 2025</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" aria-labelledby="eventsTitle">
+      <div class="container">
+        <h2 id="eventsTitle">Announcements & Events</h2>
+        <p class="sub">What's coming up this month.</p>
+        <div class="grid-2" id="eventList">
+          <div class="event">
+            <div class="date">Sun 12:00 PM</div>
+            <div>
+              <h3>Worship Service</h3>
+              <div class="meta">In-person</div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="date">Wed 7:00 PM</div>
+            <div>
+              <h3>Midweek Prayer</h3>
+              <div class="meta">Prayer & devotional • Fellowship Hall</div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="date">1st Sat 10:00 AM</div>
+            <div>
+              <h3>Community Outreach</h3>
+              <div class="meta">Food & clothing drive • Parking Lot</div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="date">2nd Sun 12:00 PM</div>
+            <div>
+              <h3>Newcomer Lunch</h3>
+              <div class="meta">Meet pastors & leaders • Café</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:.5rem;flex-wrap:wrap">
+          <button class="btn ghost" data-filter="all">All</button>
+          <button class="btn ghost" data-filter="sun">Sundays</button>
+          <button class="btn ghost" data-filter="wed">Wednesdays</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIVE -->
+    <section id="give" aria-labelledby="giveTitle">
+      <div class="container give">
+        <div class="card soft">
+          <h2 id="giveTitle">Give Online</h2>
+          <p class="sub">Your generosity fuels the mission.</p>
+          <p>Use the secure buttons below to give a one-time gift. (Replace links with your giving provider.)</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:10px">
+            <a class="btn" href="#" aria-label="Give one-time">Give One-Time</a>
+
+          </div>
+          <p style="color:var(--muted);font-size:.95rem;margin-top:10px">“Each one must give as he has decided in his heart…” — 2 Cor 9:7</p>
+        </div>
+        <div class="card soft">
+          <h3>Other Ways to Give</h3>
+          <ul>
+            <li>In service: cash/check in offering box</li>
+            <li>Mail: 3900 Southwest Blvd, Fort Worth, TX 76116</li>
+            <li>Text-to-give: 682-465-4530</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contactTitle">
+      <div class="container">
+        <h2 id="contactTitle">Contact Us</h2>
+        <p class="sub">We'd love to hear from you.</p>
+        <div class="grid-2">
+          <form id="contactForm" novalidate>
+            <label>
+              <span>Name</span>
+              <input name="name" type="text" placeholder="Your name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" placeholder="you@email.com" required />
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="How can we pray for you?" required></textarea>
+            </label>
+            <button class="btn" type="submit">Send Message</button>
+            <p id="formStatus" role="status" style="color:var(--muted);"></p>
+          </form>
+          <div class="card soft">
+            <h3>Visit Us</h3>
+            <p>3900 Southwest Blvd, Fort Worth, TX 76116</p>
+            <p>Sunday 12:00 PM</p>
+            <p><strong>Email</strong> teemoo2212@gmail.com<br/>
+               <strong>Phone</strong> (000) 000-0000</p>
+            <div style="border-radius:12px;overflow:hidden;margin-top:8px">
+              <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.9636024576757!2d-97.44489362577474!3d32.71359487369024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e0d2dc775ca13%3A0x29075cdec969647e!2s3900%20Southwest%20Blvd%2C%20Fort%20Worth%2C%20TX%2076116!5e0!3m2!1sen!2sus!4v1756943074368!5m2!1sen!2sus" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+      <div>© <span id="year"></span> Agape Ebenezer Karen Bapthist Church. All rights reserved.</div>
+      <div style="display:flex;gap:.8rem">
+        <a class="btn ghost" href="#">Facebook</a>
+        <a class="btn ghost" href="#">YouTube</a>
+        <a class="btn ghost" href="#">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.hasAttribute('hidden') === false;
+      if (isOpen) { mobileMenu.setAttribute('hidden',''); toggle.setAttribute('aria-expanded','false'); }
+      else { mobileMenu.removeAttribute('hidden'); toggle.setAttribute('aria-expanded','true'); }
+    });
+
+    // Smooth scroll for same-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+          mobileMenu.setAttribute('hidden','');
+          toggle.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+
+    // Simple event filter demo
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const items = Array.from(document.querySelectorAll('#eventList .event'));
+    filterButtons.forEach(btn => btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      items.forEach((el) => {
+        const title = el.querySelector('h3').textContent.toLowerCase();
+        const date = el.querySelector('.date').textContent.toLowerCase();
+        const show = f === 'all' || (f==='sun' && date.includes('sun')) || (f==='wed' && date.includes('wed'));
+        el.style.display = show ? 'flex' : 'none';
+      });
+    }));
+
+  </script>
+
+  <!-- Contact Form -->
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("p2RIQ6jaXNpHSPGxR"); // replace with your EmailJS Public Key
+
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_kyrxrfi", "template_gaijpr5", this)
+      .then(() => {
+        statusEl.textContent = "✅ Message sent successfully!";
+        form.reset();
+      }, (err) => {
+        statusEl.textContent = "❌ Failed to send: " + JSON.stringify(err);
+      });
+  });
+</script>
+
+
+
+</body>
+</html>
