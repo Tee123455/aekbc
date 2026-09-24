@@ -1,0 +1,27 @@
+{
+  "name": "aekbc-website",
+  "version": "1.0.0",
+  "description": "Agape Ebenezer Karen Baptist Church website",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "serve:macos": "open http://localhost:8000 && python -m http.server 8000",
+    "lint": "echo 'Add a linter (eslint) if needed'"
+  },
+  "keywords": [
+    "church",
+    "website",
+    "responsive",
+    "modern"
+  ],
+  "author": "Agape Ebenezer Karen Baptist Church",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/aekbc.git"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "emailjs-com": "^3.0.0"
+  }
+}

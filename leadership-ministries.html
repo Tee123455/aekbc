@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leadership & Ministries – Agape Ebenezer Karen Baptist Church</title>
+  <meta name="description" content="Meet our leadership team and discover how you can get involved in our ministries." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <style>
+    .leader-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .leader-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(202, 161, 91, 0.28);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .leader-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      background: #f2e7d8;
+    }
+
+    .leader-card .content {
+      padding: 18px 20px 20px;
+    }
+
+    .leader-card h3 {
+      margin: 0 0 6px;
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+    }
+
+    .leader-role {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .leader-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .leader-form {
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+      border: 1px solid rgba(202, 161, 91, 0.28);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .leader-form .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .leader-form label {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .leader-form input,
+    .leader-form textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(202, 161, 91, 0.35);
+      background: rgba(255,255,255,0.12);
+      color: var(--ink);
+      padding: 12px 14px;
+      font: inherit;
+    }
+
+    .leader-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .leader-status {
+      margin-top: 12px;
+      color: var(--muted);
+      min-height: 22px;
+    }
+
+    @media (max-width: 760px) {
+      .leader-grid,
+      .leader-form .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size: 1.05rem">Agape Ebenezer Karen Baptist Church</div>
+          <div style="font-size: 0.8rem; color: var(--muted)">Welcome • လျာထီၣ်</div>
+        </div>
+      </div>
+      <nav class="links" aria-label="Main">
+        <a href="index.html#about">About</a>
+        <a href="leadership-ministries.html">Ministries</a>
+        <a href="index.html#sermons">Sermons</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#give">Give</a>
+      </nav>
+      <button class="menu-toggle btn ghost" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+    <div id="mobileMenu" hidden>
+      <div class="container" style="padding: 0 0 16px">
+        <nav style="display: grid; gap: 8px" aria-label="Mobile">
+          <a class="btn ghost" href="index.html#about">About</a>
+          <a class="btn ghost" href="leadership-ministries.html">Ministries</a>
+          <a class="btn ghost" href="index.html#sermons">Sermons</a>
+          <a class="btn ghost" href="index.html#events">Events</a>
+          <a class="btn ghost" href="index.html#give">Give</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+    <main id="main">
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="container wrap">
+        <div>
+          <span class="badge">Our Leadership & Ministries</span>
+          <h1 id="heroTitle">Meet the leaders serving our church</h1>
+          <p class="lead">Each of our leaders, elders, and ministry team members is committed to helping people grow in faith, worship God, and serve the community with love and compassion.</p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 10px">
+            <a class="btn" href="#leadership">View Leaders</a>
+            <a class="btn alt" href="index.html#give">Support Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership" aria-labelledby="leadershipTitle">
+      <div class="container">
+        <h2 id="leadershipTitle">Our Leadership Team</h2>
+        <p class="sub">Pastors, leaders, and ministry team members guiding our church with prayer and purpose.</p>
+        <div class="leader-grid" id="leaderList"></div>
+      </div>
+    </section>
+
+    <section id="add-leader">
+      <div class="container">
+        <h2>Add A Leader</h2>
+        <p class="sub">Upload a photo and add the leader's information here.</p>
+
+        <form id="leaderForm" class="leader-form">
+          <div class="grid-2">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Pastor Name" required />
+            </label>
+            <label>
+              <span>Title / Role</span>
+              <input type="text" name="title" placeholder="Lead Pastor" required />
+            </label>
+            <label>
+              <span>Ministry / Department</span>
+              <input type="text" name="ministry" placeholder="Pastoral Leadership" required />
+            </label>
+            <label>
+              <span>Upload Photo</span>
+              <input type="file" name="photo" accept="image/*" />
+            </label>
+          </div>
+
+          <label>
+            <span>Bio / Information</span>
+            <textarea name="bio" placeholder="Write a short bio for this leader..." required></textarea>
+          </label>
+
+          <button class="btn" type="submit">Add Leader</button>
+          <div class="leader-status" id="leaderStatus" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap">
+      <div>© <span id="year"></span> Agape Ebenezer Karen Baptist Church. All rights reserved.</div>
+      <div style="display: flex; gap: 0.8rem">
+        <a class="btn ghost" href="https://www.facebook.com/aekbc.youths" target="_blank">Facebook</a>
+        <a class="btn ghost" href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const leaderList = document.getElementById('leaderList');
+    const leaderForm = document.getElementById('leaderForm');
+    const leaderStatus = document.getElementById('leaderStatus');
+
+    const defaultLeaders = [
+      {
+        name: 'Pastor Ebenezer Ku',
+        title: 'Lead Pastor',
+        ministry: 'Pastoral Leadership',
+        bio: 'Pastor Ebenezer leads the church with a heart for Christ-centered worship, discipleship, and spiritual renewal. He is committed to equipping believers to grow in faith and serve their communities with love and wisdom.',
+        image: 'src/images/pastor.png'
+      },
+      {
+        name: 'Elder John Doe',
+        title: 'Elder',
+        ministry: 'Care & Leadership',
+        bio: 'Elder John supports the church family through pastoral care, prayer, and leadership development. He helps guide the congregation in unity, wisdom, and faithful service.',
+        image: 'src/images/Moo 2.png'
+      },
+      {
+        name: 'Deaconess Sarah',
+        title: 'Deaconess',
+        ministry: 'Women’s Ministry',
+        bio: 'Deaconess Sarah serves with compassion through women’s discipleship, support, and outreach. Her ministry helps women grow in faith and fellowship within the church.',
+        image: 'src/images/Paw 2.png'
+      }
+    ];
+
+    function getLeaders() {
+      const saved = localStorage.getItem('churchLeaders');
+      if (!saved) {
+        localStorage.setItem('churchLeaders', JSON.stringify(defaultLeaders));
+        return [...defaultLeaders];
+      }
+      try {
+        return JSON.parse(saved);
+      } catch {
+        localStorage.setItem('churchLeaders', JSON.stringify(defaultLeaders));
+        return [...defaultLeaders];
+      }
+    }
+
+    function renderLeaders() {
+      const leaders = getLeaders();
+      if (!leaderList) return;
+
+      leaderList.innerHTML = leaders.map((leader) => `
+        <article class="leader-card">
+          <img src="${leader.image || 'src/images/pastor.png'}" alt="${leader.name}" />
+          <div class="content">
+            <h3>${leader.name}</h3>
+            <div class="leader-role">${leader.title}</div>
+            <p><strong>${leader.ministry}</strong></p>
+            <p style="margin-top: 10px;">${leader.bio}</p>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    if (leaderForm) {
+      leaderForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(leaderForm);
+        const file = formData.get('photo');
+        const name = formData.get('name').toString().trim();
+        const title = formData.get('title').toString().trim();
+        const ministry = formData.get('ministry').toString().trim();
+        const bio = formData.get('bio').toString().trim();
+
+        if (!name || !title || !ministry || !bio) {
+          leaderStatus.textContent = 'Please fill in all fields.';
+          return;
+        }
+
+        const leaders = getLeaders();
+        const newLeader = {
+          name,
+          title,
+          ministry,
+          bio,
+          image: ''
+        };
+
+        if (file && file.size > 0) {
+          const reader = new FileReader();
+          reader.onload = function () {
+            newLeader.image = reader.result;
+            leaders.push(newLeader);
+            localStorage.setItem('churchLeaders', JSON.stringify(leaders));
+            renderLeaders();
+            leaderForm.reset();
+            leaderStatus.textContent = 'Leader added successfully.';
+          };
+          reader.readAsDataURL(file);
+          return;
+        }
+
+        newLeader.image = 'src/images/pastor.png';
+        leaders.push(newLeader);
+        localStorage.setItem('churchLeaders', JSON.stringify(leaders));
+        renderLeaders();
+        leaderForm.reset();
+        leaderStatus.textContent = 'Leader added successfully.';
+      });
+    }
+
+    renderLeaders();
+  </script>
+</body>
+</html>

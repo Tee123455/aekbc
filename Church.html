@@ -8,94 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg: #0b1020; /* deep navy */
-      --card:#0f1530;
-      --ink:#e6e9f5;
-      --muted:#b8bed8;
-      --accent:#7c9cff; /* indigo */
-      --accent-2:#76e4c3; /* teal */
-      --ring: rgba(124,156,255,.45);
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
-      --radius: 18px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#090e1d 0%, #0c1230 100%);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Arial,Helvetica,sans-serif}
-    a{color:inherit}
-    img{max-width:100%;display:block}
-    .container{max-width:1100px;margin-inline:auto;padding:0 20px}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--accent),#4b6bff);color:#fff;border:0;padding:.9rem 1.1rem;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
-    .btn.alt{background:linear-gradient(135deg,var(--accent-2),#59c6aa);color:#001;}
-    .btn.ghost{background:transparent;border:1px solid #2a3566}
-    .btn:focus{outline:2px solid var(--ring);outline-offset:3px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(9,14,29,.7);backdrop-filter: blur(10px);border-bottom:1px solid #1a2147}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;letter-spacing:.3px}
-    .logo{width:36px;height:36px;border-radius:10px;background:conic-gradient(from 210deg,#7c9cff,#76e4c3,#7c9cff);box-shadow:0 6px 20px rgba(124,156,255,.35)}
-    .links{display:flex;gap:1rem}
-    .links a{padding:.6rem .8rem;border-radius:10px;text-decoration:none;color:var(--muted)}
-    .links a:hover{color:var(--ink);background:#161d44}
-    .menu-toggle{display:none}
-
-    /* Hero */
-    .hero{position:relative;overflow:hidden}
-    .hero .wrap{display:grid;gap:1.3rem;grid-template-columns:1.1fr .9fr;align-items:center;padding:64px 0}
-    .badge{display:inline-flex;gap:.5rem;align-items:center;border:1px solid #2a3566;color:var(--muted);padding:.4rem .7rem;border-radius:999px;font-size:.9rem}
-    h1{font-size:clamp(2rem,4vw,3rem);margin:0}
-    .lead{color:var(--muted);font-size:1.05rem;line-height:1.6}
-    .hero-cards{display:grid;gap:14px;grid-template-columns:1fr 1fr}
-    .card{background:linear-gradient(180deg,#0e1430, #0a1026);border:1px solid #1b2350;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:.2rem 0 .2rem;font-size:1rem}
-    .card p{margin:.2rem 0;color:var(--muted);font-size:.95rem}
-
-    /* Sections */
-    section{padding:64px 0;border-top:1px solid #13193d}
-    section h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 .6rem}
-    section .sub{color:var(--muted);margin-bottom:24px}
-
-    .grid-3{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
-    .grid-2{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
-
-    /* Ministries */
-    .min-card{display:grid;gap:.4rem;background:linear-gradient(180deg,#0e1536,#0b1230);border:1px solid #1b2350;border-radius:16px;padding:18px}
-    .min-card .emoji{font-size:1.6rem}
-
-    /* Sermons */
-    .sermon{display:grid;gap:.6rem;background:linear-gradient(180deg,#0e1536,#0b1230);border:1px solid #1b2350;border-radius:16px;overflow:hidden}
-    .sermon .body{padding:16px}
-    .sermon .meta{color:var(--muted);font-size:.9rem}
-
-    /* Events */
-    .event{display:flex;gap:14px;background:linear-gradient(180deg,#0e1536,#0b1230);border:1px solid #1b2350;border-radius:16px;padding:16px;align-items:flex-start}
-    .event .date{border:1px solid #2a3566;border-radius:12px;padding:8px 10px;min-width:110px;text-align:center;font-weight:700}
-
-    /* Give */
-    .give{display:grid;gap:16px;grid-template-columns:1.1fr .9fr}
-    .card.soft{background:linear-gradient(180deg,#0f173d,#0b1230)}
-
-    /* Contact */
-    form{display:grid;gap:12px}
-    input, textarea{background:#0b112a;border:1px solid #1a2356;border-radius:12px;color:var(--ink);padding:12px}
-    input:focus, textarea:focus{outline:2px solid var(--ring);border-color:#4b6bff}
-
-    footer{padding:40px 0;color:var(--muted)}
-
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero .wrap{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr 1fr}
-      .give{grid-template-columns:1fr}
-    }
-    @media (max-width: 640px){
-      .links{display:none}
-      .menu-toggle{display:inline-flex}
-      .grid-3,.grid-2{grid-template-columns:1fr}
-      .hero-cards{grid-template-columns:1fr}
-    }
-  </style>
+  <link rel="stylesheet" href="src/css/styles.css" />
 </head>
 <body>
   <header>
@@ -109,7 +22,7 @@
       </div>
       <nav class="links" aria-label="Main">
         <a href="#about">About</a>
-        <a href="#ministries">Ministries</a>
+        <a href="leadership-ministries.html">Ministries</a>
         <a href="#sermons">Sermons</a>
         <a href="#events">Events</a>
         <a href="#give">Give</a>
@@ -121,7 +34,7 @@
       <div class="container" style="padding:0 0 16px">
         <nav style="display:grid;gap:8px" aria-label="Mobile">
           <a class="btn ghost" href="#about">About</a>
-          <a class="btn ghost" href="#ministries">Ministries</a>
+          <a class="btn ghost" href="leadership-ministries.html">Ministries</a>
           <a class="btn ghost" href="#sermons">Sermons</a>
           <a class="btn ghost" href="#events">Events</a>
           <a class="btn ghost" href="#give">Give</a>
@@ -304,21 +217,6 @@
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contactTitle">
       <div class="container">
-        <h2 id="contactTitle">Contact Us</h2>
-        <p class="sub">We'd love to hear from you.</p>
-        <div class="grid-2">
-          <form id="contactForm" novalidate>
-            <label>
-              <span>Name</span>
-              <input name="name" type="text" placeholder="Your name" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input name="email" type="email" placeholder="you@email.com" required />
-            </label>
-            <label>
-              <span>Message</span>
-              <textarea name="message" rows="5" placeholder="How can we pray for you?" required></textarea>
             </label>
             <button class="btn" type="submit">Send Message</button>
             <p id="formStatus" role="status" style="color:var(--muted);"></p>
@@ -343,9 +241,8 @@
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
       <div>© <span id="year"></span> Agape Ebenezer Karen Bapthist Church. All rights reserved.</div>
       <div style="display:flex;gap:.8rem">
-        <a class="btn ghost" href="#">Facebook</a>
-        <a class="btn ghost" href="#">YouTube</a>
-        <a class="btn ghost" href="#">Instagram</a>
+        <a class="btn ghost" href="https://www.facebook.com/aekbc.youths"  target="_blank">Facebook</a>
+        <a class="btn ghost" href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC"  target="_blank">YouTube</a>
       </div>
     </div>
   </footer>
