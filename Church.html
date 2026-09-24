@@ -3,46 +3,108 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agabe Ebenezer Karen Baptist Church – Welcome</title>
+  <title>Agape Ebenezer Karen Baptist Church – Welcome</title>
   <meta name="description" content="Welcome to our church. Join us for worship, ministries, and community events." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/css/styles.css" />
+  <style>
+    .sermon-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      padding: 18px 18px 16px;
+      border-radius: 16px 16px 0 0;
+      background: linear-gradient(135deg, #090b10 0%, #1c1020 44%, #281630 100%);
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(202, 161, 91, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sermon-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 32%);
+      pointer-events: none;
+    }
+
+    .sermon-link > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .yt-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .sermon-video-title {
+      font-size: 2.2rem;
+      line-height: 1.1;
+      font-weight: 800;
+      margin: 6px 0 8px;
+    }
+
+    .sermon-video-status {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .sermon-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .sermon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .sermon-btn.primary {
+      background: #fff;
+      color: #111;
+    }
+
+    .sermon-btn.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sermon-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:1.05rem">Agape Ebenezer Karen Baptist Church</div>
-          <div style="font-size:.8rem;color:var(--muted)">Welcome • လျာထီၣ်</div>
-        </div>
-      </div>
-      <nav class="links" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="leadership-ministries.html">Ministries</a>
-        <a href="#sermons">Sermons</a>
-        <a href="#events">Events</a>
-        <a href="#give">Give</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="menu-toggle btn ghost" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
-    </div>
-    <div id="mobileMenu" hidden>
-      <div class="container" style="padding:0 0 16px">
-        <nav style="display:grid;gap:8px" aria-label="Mobile">
-          <a class="btn ghost" href="#about">About</a>
-          <a class="btn ghost" href="leadership-ministries.html">Ministries</a>
-          <a class="btn ghost" href="#sermons">Sermons</a>
-          <a class="btn ghost" href="#events">Events</a>
-          <a class="btn ghost" href="#give">Give</a>
-          <a class="btn ghost" href="#contact">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+<header><div class="container nav"><a class="brand" href="index.html" aria-label="AEKBC home"><span class="logo" aria-hidden="true"></span><span><strong>Agape Ebenezer</strong><small>KAREN BAPTIST CHURCH</small></span></a><nav class="links" aria-label="Main"><a href="index.html#about">Our church</a><a href="leadership-ministries.html">Ministries</a><a href="index.html#sermons">Messages</a><a href="index.html#give">Give</a><a class="btn" href="index.html#visit">Plan your visit <span aria-hidden="true">↗</span></a></nav><button class="menu-toggle btn ghost" aria-expanded="false" aria-controls="mobileMenu">Menu <span aria-hidden="true">☰</span></button></div><div id="mobileMenu" hidden><nav class="container mobile-links" aria-label="Mobile"><a href="index.html#about">Our church</a><a href="leadership-ministries.html">Ministries</a><a href="index.html#sermons">Messages</a><a href="index.html#give">Give</a><a href="index.html#visit">Plan your visit ↗</a></nav></div></header>
 
   <main id="main">
     <!-- HERO -->
@@ -123,21 +185,51 @@
         <p class="sub">Watch or listen on YouTube.</p>
         <div class="grid-3">
           <article class="sermon">
-            <iframe width="100%" height="220" src="https://www.youtube.com/embed/vGUdFNtmkP4" title="Sermon" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <a class="sermon-link" href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC" target="_blank" rel="noreferrer" aria-label="Watch sermon videos on YouTube">
+              <div class="yt-tag">▶ YouTube</div>
+              <div>
+                <div class="sermon-video-title">Watch</div>
+                <div class="sermon-video-status">The latest church messages are live on our YouTube channel.</div>
+              </div>
+              <div class="sermon-cta-row">
+                <span class="sermon-btn primary">Watch on YouTube</span>
+                <span class="sermon-btn secondary">Learn more</span>
+              </div>
+            </a>
             <div class="body">
               <h3>Our Children Performing</h3>
               <div class="meta">Children • Aug 25, 2025</div>
             </div>
           </article>
           <article class="sermon">
-            <iframe width="100%" height="220" src="https://www.youtube.com/embed/Y1ef2seNSVM" title="Sermon" frameborder="0" allowfullscreen></iframe>
+            <a class="sermon-link" href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC" target="_blank" rel="noreferrer" aria-label="Watch sermon videos on YouTube">
+              <div class="yt-tag">▶ YouTube</div>
+              <div>
+                <div class="sermon-video-title">Listen</div>
+                <div class="sermon-video-status">You can watch the next message and past sermons from our channel.</div>
+              </div>
+              <div class="sermon-cta-row">
+                <span class="sermon-btn primary">Watch on YouTube</span>
+                <span class="sermon-btn secondary">Learn more</span>
+              </div>
+            </a>
             <div class="body">
               <h3>Sermon by Thera Saw Mu Lar</h3>
               <div class="meta">Guest Speaker • Aug 18, 2025</div>
             </div>
           </article>
           <article class="sermon">
-            <iframe width="100%" height="220" src="https://www.youtube.com/embed/Fxs8eCDIHo4" title="Sermon" frameborder="0" allowfullscreen></iframe>
+            <a class="sermon-link" href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC" target="_blank" rel="noreferrer" aria-label="Watch sermon videos on YouTube">
+              <div class="yt-tag">▶ YouTube</div>
+              <div>
+                <div class="sermon-video-title">Join</div>
+                <div class="sermon-video-status">Visit our channel to view the full sermon archive and updates.</div>
+              </div>
+              <div class="sermon-cta-row">
+                <span class="sermon-btn primary">Watch on YouTube</span>
+                <span class="sermon-btn secondary">Learn more</span>
+              </div>
+            </a>
             <div class="body">
               <h3>Our Youth In Competetion</h3>
               <div class="meta">Youth • Aug 11, 2025</div>
@@ -214,102 +306,21 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contactTitle">
-      <div class="container">
-            </label>
-            <button class="btn" type="submit">Send Message</button>
-            <p id="formStatus" role="status" style="color:var(--muted);"></p>
-          </form>
-          <div class="card soft">
-            <h3>Visit Us</h3>
-            <p>3900 Southwest Blvd, Fort Worth, TX 76116</p>
-            <p>Sunday 12:00 PM</p>
-            <p><strong>Email</strong> teemoo2212@gmail.com<br/>
-               <strong>Phone</strong> (000) 000-0000</p>
-            <div style="border-radius:12px;overflow:hidden;margin-top:8px">
-              <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.9636024576757!2d-97.44489362577474!3d32.71359487369024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e0d2dc775ca13%3A0x29075cdec969647e!2s3900%20Southwest%20Blvd%2C%20Fort%20Worth%2C%20TX%2076116!5e0!3m2!1sen!2sus!4v1756943074368!5m2!1sen!2sus" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="contact" aria-labelledby="contactTitle"><div class="container"><h2 id="contactTitle">We’d love to meet you.</h2><p>Join us Sunday at 12:00 PM.</p><address>3900 Southwest Blvd, Fort Worth, TX 76116</address><a class="btn" href="index.html#visit">Plan your visit →</a></div></section>
   </main>
 
-  <footer>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
-      <div>© <span id="year"></span> Agape Ebenezer Karen Bapthist Church. All rights reserved.</div>
-      <div style="display:flex;gap:.8rem">
-        <a class="btn ghost" href="https://www.facebook.com/aekbc.youths"  target="_blank">Facebook</a>
-        <a class="btn ghost" href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC"  target="_blank">YouTube</a>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="container footer-top"><a class="brand" href="index.html" aria-label="AEKBC home"><span class="logo" aria-hidden="true"></span><span><strong>Agape Ebenezer</strong><small>KAREN BAPTIST CHURCH</small></span></a><p>A community of faith.<br>A place to call home.</p><div><a href="https://www.facebook.com/aekbc.youths" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Agape Ebenezer Karen Baptist Church</span><span>Fort Worth, Texas · Rooted in faith. Growing in love.</span></div></footer>
 
-  <script>
-    // Mobile menu toggle
-    const toggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    toggle.addEventListener('click', () => {
-      const isOpen = mobileMenu.hasAttribute('hidden') === false;
-      if (isOpen) { mobileMenu.setAttribute('hidden',''); toggle.setAttribute('aria-expanded','false'); }
-      else { mobileMenu.removeAttribute('hidden'); toggle.setAttribute('aria-expanded','true'); }
-    });
 
-    // Smooth scroll for same-page links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if(el){
-          e.preventDefault();
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-          mobileMenu.setAttribute('hidden','');
-          toggle.setAttribute('aria-expanded','false');
-        }
-      });
-    });
-
-    // Simple event filter demo
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    const items = Array.from(document.querySelectorAll('#eventList .event'));
-    filterButtons.forEach(btn => btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      items.forEach((el) => {
-        const title = el.querySelector('h3').textContent.toLowerCase();
-        const date = el.querySelector('.date').textContent.toLowerCase();
-        const show = f === 'all' || (f==='sun' && date.includes('sun')) || (f==='wed' && date.includes('wed'));
-        el.style.display = show ? 'flex' : 'none';
-      });
-    }));
-
-  </script>
 
   <!-- Contact Form -->
 
 <!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("p2RIQ6jaXNpHSPGxR"); // replace with your EmailJS Public Key
-
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm("service_kyrxrfi", "template_gaijpr5", this)
-      .then(() => {
-        statusEl.textContent = "✅ Message sent successfully!";
-        form.reset();
-      }, (err) => {
-        statusEl.textContent = "❌ Failed to send: " + JSON.stringify(err);
-      });
-  });
-</script>
 
 
 
+
+
+<script type="module">import { init } from "./src/js/main.js"; init();</script>
 </body>
 </html>

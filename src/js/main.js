@@ -1,94 +1,85 @@
-// Mobile menu toggle functionality
+const channelUrl = 'https://www.youtube.com/@AGAPEEBENEZERKARENBAPTISTCHURC';
+
 export function initMobileMenu() {
   const toggle = document.querySelector('.menu-toggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  if (!toggle || !mobileMenu) return;
-
+  const menu = document.getElementById('mobileMenu');
+  if (!toggle || !menu) return;
+  const close = () => { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); };
   toggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.hasAttribute('hidden') === false;
-    if (isOpen) {
-      mobileMenu.setAttribute('hidden', '');
-      toggle.setAttribute('aria-expanded', 'false');
-    } else {
-      mobileMenu.removeAttribute('hidden');
-      toggle.setAttribute('aria-expanded', 'true');
-    }
+    menu.hidden = !menu.hidden;
+    toggle.setAttribute('aria-expanded', String(!menu.hidden));
   });
-
-  // Close menu when link is clicked
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.setAttribute('hidden', '');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !menu.hidden) { close(); toggle.focus(); }
   });
+  document.addEventListener('click', event => {
+    if (!menu.hidden && !menu.contains(event.target) && !toggle.contains(event.target)) close();
+  });
+  window.matchMedia('(min-width: 851px)').addEventListener('change', event => { if (event.matches) close(); });
 }
 
-// Smooth scroll for same-page links
-export function initSmoothScroll() {
-  const mobileMenu = document.getElementById('mobileMenu');
-  const toggle = document.querySelector('.menu-toggle');
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      const el = document.querySelector(id);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (mobileMenu) {
-          mobileMenu.setAttribute('hidden', '');
-          if (toggle) toggle.setAttribute('aria-expanded', 'false');
-        }
-      }
-    });
-  });
-}
-
-// Event filter functionality
 export function initEventFilter() {
-  const filterButtons = document.querySelectorAll('[data-filter]');
-  const items = Array.from(document.querySelectorAll('#eventList .event'));
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      items.forEach(el => {
-        const title = el.querySelector('h3')?.textContent.toLowerCase() || '';
-        const date = el.querySelector('.date')?.textContent.toLowerCase() || '';
-        const show = f === 'all' || (f === 'sun' && date.includes('sun')) || (f === 'wed' && date.includes('wed'));
-        el.style.display = show ? 'flex' : 'none';
+  const buttons = document.querySelectorAll('[data-filter]');
+  buttons.forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
+    button.addEventListener('click', () => {
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      document.querySelectorAll('#eventList .event').forEach(event => {
+        event.hidden = button.dataset.filter !== 'all' && !event.querySelector('.date')?.textContent.toLowerCase().includes(button.dataset.filter);
       });
     });
   });
 }
 
-// Update year in footer
 export function updateFooterYear() {
-  const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 }
 
-// Accordion toggle functionality
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[character]);
+}
+
+function channelCard() {
+  return `<article class="sermon"><a class="sermon-link" href="${channelUrl}" target="_blank" rel="noopener noreferrer"><span class="yt-tag">▶ AEKBC ON YOUTUBE</span><div><div class="sermon-video-title">A message of hope.</div><div class="sermon-video-status">Worship and grow with our church family.</div></div><span class="sermon-cta-row">Watch on YouTube ↗</span></a><div class="body"><h3>Messages from our church</h3><div class="meta">Explore worship services and recent uploads</div></div></article>`;
+}
+
+export async function initLatestVideos() {
+  const container = document.getElementById('youtubeVideos');
+  if (!container) return;
+  container.innerHTML = channelCard();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const feed = 'https://www.youtube.com/feeds/videos.xml?channel_id=UC62JtIKzB3j3yytVsTqci9w';
+    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}`, { signal: controller.signal });
+    if (!response.ok) throw new Error('Feed unavailable');
+    const data = await response.json();
+    const videos = (Array.isArray(data.items) ? data.items : []).filter(video => /(?:yt:video:|v=)[\w-]{11}/.test(`${video.guid} ${video.link}`)).slice(0, 3);
+    if (!videos.length) return;
+    container.innerHTML = videos.map(video => {
+      const id = `${video.guid} ${video.link}`.match(/(?:yt:video:|v=)([\w-]{11})/)[1];
+      const title = escapeHtml(video.title || 'Church worship service');
+      const date = new Date(video.pubDate);
+      const label = Number.isNaN(date.getTime()) ? 'Watch on YouTube' : date.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
+      return `<article class="sermon"><a class="sermon-link" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${title} on YouTube" style="background-image:linear-gradient(0deg,rgba(20,39,30,.75),rgba(20,39,30,.08)),url('https://i.ytimg.com/vi/${id}/hqdefault.jpg')"><span class="yt-tag">▶ SUNDAY MESSAGES</span><span class="sermon-cta-row">Watch message ↗</span></a><div class="body"><h3>${title}</h3><div class="meta">${label}</div></div></article>`;
+    }).join('');
+  } catch {
+    // The channel card remains usable when the third-party feed is unavailable.
+  } finally { clearTimeout(timeout); }
+}
+
 export function initAccordion() {
-  const headers = document.querySelectorAll('.accordion-header');
-  
-  headers.forEach(header => {
-    header.addEventListener('click', () => {
-      const isExpanded = header.getAttribute('aria-expanded') === 'true';
-      header.setAttribute('aria-expanded', !isExpanded);
-    });
+  document.querySelectorAll('.accordion-header').forEach(button => {
+    button.addEventListener('click', () => button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true')));
   });
 }
 
-// Initialize all modules
 export function init() {
   initMobileMenu();
-  initSmoothScroll();
   initEventFilter();
   updateFooterYear();
   initAccordion();
+  initLatestVideos();
 }
